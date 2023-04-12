@@ -1,0 +1,18 @@
+type (
+    AddRequest struct {
+        Name   string `path:"name,options=^\\w+$"`
+        Email  string `json:"email"`
+        DOB    string `json:"dob"`
+        Mobile string `json:"mobile"`
+    }
+
+    AddReply struct {
+        Code    int    `json:"code"`
+        Message string `json:"message"`
+    }
+
+    // define your service interface here
+    Adder interface {
+        Add(ctx context.Context, req AddRequest) (*AddReply, error)
+    }
+)
